@@ -1,4 +1,4 @@
-#PUBG Data
+# PUBG Data
 
 Displays PUBG Data from their API.
 
