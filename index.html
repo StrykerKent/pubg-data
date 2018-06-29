@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css\style.css">
+        <title>Pubg Stats</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#"><img src="images/pubg.png" height="60"  class="d-inline-block align-top" alt="" /> Stats</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Line Graph</a>
+                        </li>
+                    </ul> -->
+                </div>
+            </nav>
+        </header>
+    <div class="container-fluid">
+        <!-- <h1 class="hide">Pubg Stats</h1>
+        <br /> -->
+        <div class="form-group row">
+            <label class="col-form-label col-md-1">Season</label>
+            <div class="col-md-2">
+                <select name="seasons" class="form-control" id="season">
+                    <!-- <option value="division.bro.official.2018-06">06/18</option>
+                    <option value="division.bro.official.2018-05">05/18</option>
+                    <option value="division.bro.official.2018-04">04/18</option>
+                    <option value="division.bro.official.2018-03">03/18</option>
+                    <option value="division.bro.official.2018-02">02/18</option>
+                    <option value="division.bro.official.2017-beta">beta-2017</option> -->
+                </select>
+            </div>
+            <label class="col-form-label col-md-1 text-right">Player</label>
+            <div class="col-md-3">
+                <select name="player" class="form-control" id="player">
+                    <option value="account.91b24b1d6d554348b0c09195e5f3fd84">BlephenMcHughes</option>
+                    <option value="account.95f6987dc1a149448a57fe543aff54d2">Tpwnz</option>
+                    <option value="account.1e12bb77028b437eb1c4b98cc1bb95ed">dun_snuck</option>
+                    <option value="account.68313f59962746efa0139e0eb8111d27">CrazoStevo</option>
+                    <option value="account.392f262211a04a61b14cfdf08e1dfde3">SneakyMean</option>
+                    <option value="account.19c0405b4b6a4fe5956da38b65fd830e">Boonedoggles</option>
+                    <option value="account.c66be3d206024ae7ae9670dfa24e8e87">Jpwnz</option>
+                    <option value="account.821464f9952a4609b9689b1c9b882b9e">bonghits4harambe</option>
+                    <option value="account.d50fdc18fcad49c691d38466bed6f8fd">Shroud</option> 
+                    <option value="account.07f76f0a809845c59173cb26548030ec">HerpDerpDur1337</option>
+                    <option value="account.fc410d39ce1346b991a7bdfea5d2ccbd">Bombtom</option>
+                    <option value="input">**Type Player Account Number Myself**</option>
+                </select>
+            </div>
+            <label class="col-form-label col-md-2 text-center">Platform-Region</label>
+            <div class="col-md-2">
+                <select name="player" class="form-control" id="platformRegion">
+                        <option value="xbox-as">xbox-as</option><option value="xbox-eu">xbox-eu</option><option value="xbox-na">xbox-na</option><option value="xbox-oc">xbox-oc</option><option value="pc-krjp">pc-krjp</option><option value="pc-jp">pc-jp</option><option value="pc-na" selected>pc-na</option><option value="pc-eu">pc-eu</option><option value="pc-ru">pc-ru</option><option value="pc-oc">pc-oc</option><option value="pc-kakao">pc-kakao</option><option value="pc-sea">pc-sea</option><option value="pc-sa">pc-sa</option><option value="pc-as">pc-as</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary" id="getData">Get Data</button>
+            </div>
+        </div>
+        <br />
+        <h1 class="hide">Pubg Stats</h1>
+        <br />
+        <div class="card-deck text-center" style="display:none;" id="highlights">
+                <div class="card mb-3">
+                        <div class="card-header">
+                            <h2 id="roundsPlayed"></h2>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">roundsPlayed</h4>
+                        </div>
+                    </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="top10s"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Top 10s</h4>
+                </div>
+            </div>
+            <div class="card mb-3">
+                    <div class="card-header">
+                        <h2 id="wins"></h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Wins</h4>
+                    </div>
+                </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="kills"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Kills</h4>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="kd"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">K/D</h4>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="roundMostKills"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Round Most Kills</h4>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="longestKill"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Longest Kill</h4>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 id="roadKills"></h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Road Kills</h4>
+                </div>
+            </div>
+            
+        </div>
+        <br /><br />
+        <h2 class="hide">Data By Season</h2>
+        <div class="row" id="tableData"></div>
+        <br />
+        <div id="dataPerSeason"></div>
+        <pre id="data"></pre>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    $(function() {
+        $("#getData").click(function() {
+            $("#highlights").show();
+            var player = $("#player").val();
+            var season = $("#season").val();
+            //var gameMode = $("#gameMode").val();
+            var platformRegion = $("#platformRegion").val();
+            $(".hide").show("slow");
+            $("h1:eq(0)").text($("#player option:selected").text()+"'s PUBG Stats | Season "+ $("#season option:selected").text());
+            $("#tableData").empty();
+            $.ajax({
+                url: "http://pubgdata.000webhostapp.com/data/?platreg="+platformRegion+"&player="+player+"&season="+season,
+                headers: { 'Accept': 'application/vnd.api+json'},
+                type: "GET",
+                success: function(data) {
+                        console.log(data);
+                        var iterateData = data.data.attributes.gameModeStats;
+                        $.each(iterateData, function(gm, obj ) {
+                            $("#tableData").append('<div class="col-sm-2"><table class="table table-striped table-bordered table-hover '+gm+'"></table></div>');
+                            $(".table."+gm).append('<thead><tr><th colspan="2" class="text-center">'+gm+'</th></tr></thead><tbody></tbody>');
+                            $.each(obj, function(key, value) {
+                                $(".table."+gm+" tbody").append('<tr><td class="key">'+key+'</td><td class="'+gm+' '+key+'">'+value+'</td></tr>');
+                                //count++;
+                            });
+                            $("html").append('</div></div>');
+                        });
+                        //get max by iterating throught the key names on first table
+                        $.each($("table:eq(0) td.key"), function() {
+                            colorMax($(this).text());
+                        });
+                        $("#roundsPlayed").html(sumByKey("roundsPlayed"));
+                        $("#top10s").html(sumByKey("top10s"));
+                        $("#wins").html(sumByKey("wins"));
+                        $("#kills").html(sumByKey("kills"));
+                        $("#roundMostKills").text(maxByKey("roundMostKills"));
+                        $("#longestKill").text(maxByKey("longestKill"));
+                        $("#roadKills").text(sumByKey("roadKills"));
+                        $("#kd").text(Number.parseFloat($("#kills").html()/$("#roundsPlayed").html()).toFixed(2));
+                }
+            }); //ajax
+        }); //get data
+        //find max of fields by key and color green
+        var colorMax = function(tdName) {
+            var arrayOfNumbers = [];
+            //get all values
+            $.each($("td."+tdName), function() {
+                arrayOfNumbers.push($(this).text());
+            });
+            if (Math.max.apply(Math, arrayOfNumbers) > 0) {
+                //iterate through each td with specific key name
+                $.each($("td."+tdName), function() {    
+                    if ($(this).text() == Math.max.apply(Math, arrayOfNumbers)) {
+                        $(this).addClass("bg-success");
+                    }
+                });
+            }
+        };
+        //get sum of fields by key
+        var sumByKey = function(tdName) {
+            //var arrayOfNumbers = [];
+            var sumOfNumbers = 0;
+            //get all values
+            $.each($("td."+tdName), function() {
+                //arrayOfNumbers.push($(this).text());
+                sumOfNumbers += parseInt($(this).text());
+            });
+            return sumOfNumbers;
+        };
+        //get max of fields by key
+        var maxByKey = function(tdName) {
+            var arrayOfNumbers = [];
+            //get all values
+            $.each($("td."+tdName), function() {
+                arrayOfNumbers.push($(this).text());
+            });
+            return Math.max.apply(Math, arrayOfNumbers);
+        };
+        //change select to input
+        $("#player").change(function() {
+            if($("#player").val() == "input") {
+                $("#player").replaceWith('<input type="text" name="player" id="player" class="form-control" placeholder="Type Account Number Here">');
+            }
+        });
+        //build seasons dynamically //for 2017, this data was wiped
+        // for (i = 1; i <= 9; i++) {
+        //     $("<option>").val("division.bro.official.2017-pre"+i).text("pre"+i+"-2017").prependTo("#season");
+        // }
+        //for this year
+        var date = new Date();
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var year = date.getFullYear();
+        for (i = 1; i <= month; i++) {
+            $("<option>").val("division.bro.official."+year+"-"+("0" + i).slice(-2)).text(("0" + i).slice(-2)+"/"+year).prependTo("#season");
+        }
+        $("#season option:first").prop("selected",true);
+    }); //function
+    </script>
+</body>
+</html>
