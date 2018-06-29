@@ -1,9 +1,7 @@
-# PUBG Data
+# PUBG Data 
 
-Displays PUBG Data from their API.
+This is a website that displays PUBG Data from their API. [Demo](http://www.stryk3r.com/pubg-data/)
 
-This was built as a proof of concept.
+This was built as a proof of concept. Made using HTML, CSS, Jquery, and PHP.
 
-Made using HTML, CSS, Jquery, and PHP.
-
-I had to set up my own API and call it to hide my API key.
+I set up my own API and call it to hide my API key.
